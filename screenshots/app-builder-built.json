@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:8081/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "探索你的領袖特質｜淡江大學領袖社",
+      "hasCanvas": true,
+      "bodyTextLen": 265,
+      "bodyTextHash": "24f163007d910000cef2a76db2b438db23f9bb176f56b8599ac35244236562e9",
+      "bodyTextPrefix": "淡江大學領袖社 探索你的領袖特質 10 個大學生活情境， 看看你最自然的領導方式。 🎁 完成測驗即登記抽獎 社博當天抽 5 名",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "探索你的領袖特質｜淡江大學領袖社",
+      "hasCanvas": true,
+      "bodyTextLen": 265,
+      "bodyTextHash": "24f163007d910000cef2a76db2b438db23f9bb176f56b8599ac35244236562e9",
+      "bodyTextPrefix": "淡江大學領袖社 探索你的領袖特質 10 個大學生活情境， 看看你最自然的領導方式。 🎁 完成測驗即登記抽獎 社博當天抽 5 名",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-built-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-built.json",
+  "divergesFromBaseline": false,
+  "baselineReasons": []
+}

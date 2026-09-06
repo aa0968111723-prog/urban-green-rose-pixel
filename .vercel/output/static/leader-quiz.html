@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#7BC96F" />
+  <meta name="description" content="10 個大學生活情境，看看你最自然的領導方式。淡江大學領袖社招生互動測驗。" />
+  <title>探索你的領袖特質｜淡江大學領袖社</title>
+  <style>
+    :root {
+      --bg-1: #EAF6FF;
+      --bg-2: #DDF3FF;
+      --bg-3: #FFFDF7;
+      --green: #7BC96F;
+      --green-deep: #5EA85A;
+      --green-soft: #E7F8E3;
+      --yellow: #FFD76A;
+      --orange: #FFA95A;
+      --text: #24333F;
+      --text-soft: #5B6B78;
+      --card: #ffffff;
+      --card-warm: #FFFDF7;
+      --line: rgba(36, 51, 63, 0.08);
+      --shadow: 0 10px 30px rgba(80, 130, 170, 0.12);
+      --shadow-soft: 0 6px 18px rgba(80, 130, 170, 0.1);
+      --radius-xs: 8px;
+      --radius-sm: 14px;
+      --radius-md: 20px;
+      --radius-lg: 28px;
+      --radius-xl: 36px;
+      --font: "PingFang TC", "Noto Sans TC", "Hiragino Sans GB", "Microsoft JhengHei", "Heiti TC", system-ui, sans-serif;
+      --vision: #5BA4E6;
+      --empathy: #7BC96F;
+      --decision: #FFA95A;
+      --crisis: #E8B84A;
+      --motion-quick: 180ms;
+      --motion-fast: 250ms;
+      --motion-emphasis: 420ms;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      font-family: var(--font);
+      color: var(--text);
+      background:
+        radial-gradient(1200px 500px at 50% -80px, #FFFDF7 0%, transparent 70%),
+        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 48%, var(--bg-3) 100%);
+      background-attachment: fixed;
+    }
+    body {
+      min-height: 100dvh;
+      overflow-x: hidden;
+    }
+    button, input { font-family: inherit; touch-action: manipulation; }
+    button { appearance: none; border: 0; background: none; }
+    img { max-width: 100%; }
+
+    .sky {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .sun {
+      position: absolute;
+      top: -40px;
+      right: -30px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #FFE9A3 0%, rgba(255, 215, 106, 0.35) 42%, transparent 70%);
+      animation: glow 4.8s ease-in-out infinite;
+    }
+    .cloud {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.78);
+      border-radius: 999px;
+      filter: blur(0.2px);
+      box-shadow: 18px 8px 0 -2px rgba(255,255,255,.7), 36px 4px 0 -6px rgba(255,255,255,.55);
+    }
+    .cloud-a { width: 90px; height: 28px; top: 8%; left: -40px; animation: drift 28s linear infinite; }
+    .cloud-b { width: 70px; height: 22px; top: 18%; right: -50px; animation: drift 34s linear infinite reverse; opacity: .8; }
+    .cloud-c { width: 110px; height: 30px; bottom: 18%; left: -80px; animation: drift 40s linear infinite; opacity: .55; }
+    .leaf {
+      position: absolute;
+      width: 18px;
+      height: 26px;
+      background: var(--green);
+      border-radius: 2px 18px 4px 18px;
+      opacity: 0.45;
+      animation: sway 5s ease-in-out infinite;
+    }
+    .leaf-a { left: 8%; bottom: 8%; transform: rotate(-20deg); }
+    .leaf-b { right: 10%; bottom: 12%; background: #9DD88A; transform: rotate(25deg); animation-delay: -1.4s; }
+    .leaf-c { left: 18%; top: 28%; width: 14px; height: 20px; opacity: .28; animation-delay: -2s; }
+
+    .app {
+      position: relative;
+      z-index: 1;
+      width: min(560px, 100%);
+      margin: 0 auto;
+      padding: 18px 16px 40px;
+      padding-top: max(18px, env(safe-area-inset-top));
+      padding-bottom: max(40px, env(safe-area-inset-bottom));
+    }
+
+    .screen { display: none; }
+    .screen.active {
+      display: block;
+      animation: fadeUp var(--motion-fast) var(--ease);
+    }
+
+    .mascot-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 6px 0 8px;
+    }
+    .turtle {
+      width: 92px;
+      height: 86px;
+      animation: bob 2.8s ease-in-out infinite;
+    }
+
+    .club-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: var(--green-deep);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .hero {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      margin: 10px 0 8px;
+      font-size: clamp(26px, 7vw, 34px);
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+    }
+    .hero p {
+      margin: 0 auto;
+      max-width: 22em;
+      color: var(--text-soft);
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .prize-card {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, #FFF6D8, #FFE7C2);
+      box-shadow: var(--shadow-soft);
+      margin: 16px 0 18px;
+    }
+    .prize-emoji {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: #fff;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .prize-card strong { display: block; font-size: 15px; }
+    .prize-card span { color: var(--text-soft); font-size: 13px; line-height: 1.5; }
+
+    .dim-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .dim-card {
+      background: var(--card);
+      border-radius: var(--radius-md);
+      padding: 14px 12px 13px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--line);
+      min-height: 132px;
+    }
+    .dim-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--green-deep);
+      margin-bottom: 6px;
+    }
+    .dim-card h2 {
+      margin: 0 0 6px;
+      font-size: 16px;
+      letter-spacing: -0.02em;
+    }
+    .dim-card p {
+      margin: 0;
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: var(--text-soft);
+    }
+    .dot {
+      width: 8px; height: 8px; border-radius: 50%; display: inline-block;
+    }
+    .dot-vision { background: var(--vision); }
+    .dot-empathy { background: var(--empathy); }
+    .dot-decision { background: var(--decision); }
+    .dot-crisis { background: var(--crisis); }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      padding: 18px 16px 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,.8);
+    }
+    .field { margin-bottom: 14px; }
+    .field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 650;
+      margin-bottom: 6px;
+    }
+    .req { color: #E07A4D; }
+    .field input {
+      width: 100%;
+      min-height: 52px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid #D7E6F2;
+      background: #FBFDFF;
+      padding: 0 14px;
+      font-size: 16px;
+      color: var(--text);
+      outline: none;
+      transition: border-color var(--motion-quick) var(--ease), box-shadow var(--motion-quick) var(--ease);
+    }
+    .field input:focus-visible {
+      border-color: var(--green);
+      box-shadow: 0 0 0 4px rgba(123, 201, 111, 0.22);
+    }
+    .field.error input {
+      border-color: #E07A4D;
+      background: #FFF8F5;
+    }
+    .error-text {
+      display: none;
+      margin: 6px 2px 0;
+      font-size: 12px;
+      color: #C45C38;
+    }
+    .field.error .error-text { display: block; }
+
+    .cta {
+      width: 100%;
+      min-height: 56px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #8ED97F, var(--green));
+      color: #16321A;
+      font-size: 17px;
+      font-weight: 750;
+      box-shadow: 0 8px 18px rgba(123, 201, 111, 0.35);
+      transition: transform var(--motion-quick) var(--ease), filter var(--motion-quick) var(--ease);
+    }
+    .cta:hover { filter: brightness(1.03); }
+    .cta:active { transform: scale(0.98); }
+    .cta:focus-visible {
+      outline: 3px solid var(--yellow);
+      outline-offset: 3px;
+    }
+    .cta.secondary {
+      background: #fff;
+      color: var(--text);
+      border: 1.5px solid #D7E6F2;
+      box-shadow: none;
+      margin-top: 10px;
+    }
+    .hint {
+      text-align: center;
+      color: var(--text-soft);
+      font-size: 13px;
+      margin: 10px 0 0;
+      line-height: 1.5;
+    }
+    .privacy {
+      text-align: center;
+      color: #7A8A96;
+      font-size: 12px;
+      margin: 16px 8px 0;
+      line-height: 1.6;
+    }
+
+    .quiz-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .q-count { font-weight: 750; font-size: 14px; }
+    .q-pct { font-size: 13px; color: var(--text-soft); font-variant-numeric: tabular-nums; }
+    .progress {
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.7);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .progress > span {
+      display: block;
+      height: 100%;
+      width: 10%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--green), #B6E86A);
+      transition: width var(--motion-fast) var(--ease);
+    }
+
+    .q-card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      padding: 18px 16px 8px;
+      box-shadow: var(--shadow);
+      animation: slideIn var(--motion-fast) var(--ease);
+    }
+    .tag {
+      display: inline-flex;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: var(--bg-1);
+      color: #3D6A8C;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .q-text {
+      margin: 12px 0 14px;
+      font-size: 18px;
+      line-height: 1.55;
+      letter-spacing: -0.02em;
+    }
+    .options { display: grid; gap: 10px; padding-bottom: 8px; }
+    .option {
+      min-height: 56px;
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      text-align: left;
+      padding: 12px 12px;
+      border-radius: var(--radius-md);
+      background: var(--card-warm);
+      border: 1.5px solid #E7EEF4;
+      color: var(--text);
+      transition: transform var(--motion-quick) var(--ease), border-color var(--motion-quick) var(--ease), background var(--motion-quick) var(--ease);
+    }
+    .option:hover { border-color: #C8E4B8; }
+    .option:active { transform: scale(0.985); }
+    .option:focus-visible {
+      outline: 3px solid var(--green);
+      outline-offset: 2px;
+    }
+    .option.selected {
+      border-color: var(--green);
+      background: var(--green-soft);
+    }
+    .option:disabled { opacity: 0.72; }
+    .opt-key {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: #fff;
+      font-weight: 800;
+      color: var(--green-deep);
+      box-shadow: 0 2px 0 rgba(36,51,63,.06);
+    }
+    .opt-text {
+      font-size: 14.5px;
+      line-height: 1.5;
+      padding-top: 4px;
+    }
+
+    .result-kicker {
+      text-align: center;
+      color: var(--text-soft);
+      font-size: 13px;
+      font-weight: 650;
+      margin: 4px 0 6px;
+    }
+    .result-title {
+      text-align: center;
+      font-size: clamp(28px, 7vw, 36px);
+      margin: 0 0 6px;
+      letter-spacing: -0.04em;
+      line-height: 1.2;
+    }
+    .result-tagline {
+      text-align: center;
+      margin: 0 0 12px;
+      color: var(--text-soft);
+      line-height: 1.6;
+    }
+    .badge-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 4px 0 14px;
+    }
+    .proto-badge {
+      width: 108px;
+      height: 108px;
+      animation: pop var(--motion-emphasis) var(--ease);
+    }
+    .result-copy p {
+      margin: 0 0 10px;
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: #314350;
+    }
+    .result-copy p:last-child { margin-bottom: 8px; }
+    .radar-card, .bars-card, .story-card, .done-card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      box-shadow: var(--shadow-soft);
+      margin-top: 12px;
+      border: 1px solid var(--line);
+    }
+    .section-label {
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      color: #6A7C89;
+      margin: 0 0 10px;
+    }
+    #radarCanvas {
+      width: 100%;
+      height: 300px;
+      display: block;
+      animation: fadeUp var(--motion-emphasis) var(--ease);
+    }
+    .score-row { margin-bottom: 12px; }
+    .score-row:last-child { margin-bottom: 0; }
+    .score-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+    .score-name { font-weight: 750; font-size: 14px; }
+    .score-val {
+      margin-left: auto;
+      font-variant-numeric: tabular-nums;
+      color: var(--text-soft);
+      font-size: 13px;
+    }
+    .main-badge {
+      font-size: 11px;
+      font-weight: 750;
+      background: var(--yellow);
+      color: #4A3A12;
+      border-radius: 999px;
+      padding: 3px 8px;
+    }
+    .bar {
+      height: 12px;
+      border-radius: 999px;
+      background: #EEF4F8;
+      overflow: hidden;
+    }
+    .bar > i {
+      display: block;
+      height: 100%;
+      width: 0;
+      border-radius: inherit;
+      transition: width 480ms var(--ease);
+    }
+    .fill-vision { background: var(--vision); }
+    .fill-empathy { background: var(--empathy); }
+    .fill-decision { background: var(--decision); }
+    .fill-crisis { background: var(--crisis); }
+
+    .story-card p { margin: 0 0 10px; line-height: 1.75; font-size: 14.5px; }
+    .story-card p:last-child { margin-bottom: 0; }
+    .club-name { font-weight: 800; color: var(--green-deep); }
+
+    .submit-status {
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-soft);
+      margin: 8px 0 0;
+      min-height: 1.4em;
+    }
+    .submit-status.ok { color: var(--green-deep); }
+    .submit-status.warn { color: #C45C38; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: none; }
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(14px); }
+      to { opacity: 1; transform: none; }
+    }
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    @keyframes sway {
+      0%, 100% { transform: rotate(-18deg); }
+      50% { transform: rotate(12deg); }
+    }
+    @keyframes drift {
+      from { transform: translateX(0); }
+      to { transform: translateX(130vw); }
+    }
+    @keyframes glow {
+      0%, 100% { opacity: .85; }
+      50% { opacity: 1; }
+    }
+    @keyframes pop {
+      0% { transform: scale(0.84); opacity: 0; }
+      70% { transform: scale(1.05); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sky" aria-hidden="true">
+    <div class="sun"></div>
+    <div class="cloud cloud-a"></div>
+    <div class="cloud cloud-b"></div>
+    <div class="cloud cloud-c"></div>
+    <div class="leaf leaf-a"></div>
+    <div class="leaf leaf-b"></div>
+    <div class="leaf leaf-c"></div>
+  </div>
+
+  <div class="app">
+    <!-- 報名頁 -->
+    <section id="screen-register" class="screen active" aria-label="報名與介紹">
+      <div class="hero">
+        <div class="mascot-wrap">
+          <svg class="turtle" viewBox="0 0 120 110" role="img" aria-label="龜龜吉祥物">
+            <ellipse cx="60" cy="98" rx="22" ry="5" fill="rgba(36,51,63,.08)"/>
+            <ellipse cx="38" cy="78" rx="10" ry="7" fill="#8ED97F"/>
+            <ellipse cx="82" cy="78" rx="10" ry="7" fill="#8ED97F"/>
+            <ellipse cx="32" cy="62" rx="9" ry="7" fill="#8ED97F"/>
+            <ellipse cx="88" cy="62" rx="9" ry="7" fill="#8ED97F"/>
+            <ellipse cx="60" cy="62" rx="36" ry="28" fill="#7BC96F"/>
+            <ellipse cx="60" cy="60" rx="24" ry="18" fill="#9BE08C"/>
+            <path d="M48 50 Q60 44 72 50 Q64 58 60 68 Q56 58 48 50Z" fill="#6FBE66" opacity=".55"/>
+            <circle cx="48" cy="58" r="5" fill="#6FBE66" opacity=".4"/>
+            <circle cx="72" cy="58" r="5" fill="#6FBE66" opacity=".4"/>
+            <circle cx="60" cy="26" r="16" fill="#9BE08C"/>
+            <circle cx="54" cy="24" r="2.4" fill="#24333F"/>
+            <circle cx="66" cy="24" r="2.4" fill="#24333F"/>
+            <circle cx="54.7" cy="23.3" r=".8" fill="#fff"/>
+            <circle cx="66.7" cy="23.3" r=".8" fill="#fff"/>
+            <circle cx="49" cy="29" r="3.2" fill="#FFB4A8" opacity=".75"/>
+            <circle cx="71" cy="29" r="3.2" fill="#FFB4A8" opacity=".75"/>
+            <path d="M55 32 Q60 36 65 32" fill="none" stroke="#4A7A46" stroke-width="1.6" stroke-linecap="round"/>
+            <ellipse cx="97" cy="58" rx="6" ry="4" fill="#8ED97F"/>
+          </svg>
+        </div>
+        <span class="club-chip" id="clubChip">淡江大學領袖社</span>
+        <h1>探索你的領袖特質</h1>
+        <p>10 個大學生活情境，<br />看看你最自然的領導方式。</p>
+      </div>
+
+      <div class="prize-card">
+        <div class="prize-emoji" aria-hidden="true">🎁</div>
+        <div>
+          <strong>完成測驗即登記抽獎</strong>
+          <span>社博當天抽 5 名<br />送手搖杯！</span>
+        </div>
+      </div>
+
+      <div class="dim-grid" aria-label="四個領導傾向">
+        <article class="dim-card">
+          <div class="dim-kicker"><span class="dot dot-vision"></span>VISION</div>
+          <h2>遠見力</h2>
+          <p>看見現在以外的下一步，喜歡先找方向與可能性。</p>
+        </article>
+        <article class="dim-card">
+          <div class="dim-kicker"><span class="dot dot-empathy"></span>EMPATHY</div>
+          <h2>同理心</h2>
+          <p>重視團隊感受，很自然地注意身邊的人。</p>
+        </article>
+        <article class="dim-card">
+          <div class="dim-kicker"><span class="dot dot-decision"></span>DECISION</div>
+          <h2>決策力</h2>
+          <p>事情來了先行動，擅長把問題轉換成下一步。</p>
+        </article>
+        <article class="dim-card">
+          <div class="dim-kicker"><span class="dot dot-crisis"></span>CRISIS</div>
+          <h2>應變力</h2>
+          <p>遇到突發狀況不容易卡住，常常能找到新的突破口。</p>
+        </article>
+      </div>
+
+      <form class="card" id="registerForm" autocomplete="off" novalidate>
+        <div class="field" id="field-name">
+          <label for="name">姓名 <span class="req">*</span></label>
+          <input id="name" name="name" type="text" inputmode="text" maxlength="40" placeholder="例如：小華" required aria-describedby="err-name" />
+          <div class="error-text" id="err-name">請填寫姓名</div>
+        </div>
+        <div class="field" id="field-department">
+          <label for="department">系級 <span class="req">*</span></label>
+          <input id="department" name="department" type="text" maxlength="40" placeholder="例如：資工一A" required aria-describedby="err-department" />
+          <div class="error-text" id="err-department">請填寫系級</div>
+        </div>
+        <div class="field" id="field-phone">
+          <label for="phone">電話 <span class="req">*</span></label>
+          <input id="phone" name="phone" type="tel" inputmode="numeric" maxlength="12" placeholder="09xxxxxxxx" required aria-describedby="err-phone" />
+          <div class="error-text" id="err-phone">請輸入有效的台灣手機號碼</div>
+        </div>
+        <button class="cta" type="submit" id="startBtn">開始探索</button>
+        <p class="hint">沒有標準答案，選你真的最可能做的事。</p>
+      </form>
+      <p class="privacy">資料僅供本次活動抽獎、聯絡與活動紀錄使用。</p>
+    </section>
+
+    <!-- 測驗頁 -->
+    <section id="screen-quiz" class="screen" aria-label="情境測驗">
+      <div class="quiz-top">
+        <div class="q-count" id="qCount">第 1 題 / 10</div>
+        <div class="q-pct" id="qPct">10%</div>
+      </div>
+      <div class="progress" aria-hidden="true"><span id="progressFill"></span></div>
+      <div class="q-card" id="questionCard">
+        <span class="tag" id="qCategory">社團危機</span>
+        <p class="q-text" id="qText"></p>
+        <div class="options" id="options"></div>
+      </div>
+    </section>
+
+    <!-- 結果頁 -->
+    <section id="screen-result" class="screen" aria-label="測驗結果">
+      <p class="result-kicker">你的領袖原型是</p>
+      <div class="badge-wrap">
+        <div class="proto-badge" id="protoBadge" aria-hidden="true"></div>
+      </div>
+      <h2 class="result-title" id="resultTitle">格局型領航者</h2>
+      <p class="result-tagline" id="resultTagline"></p>
+      <div class="result-copy" id="resultBody"></div>
+
+      <div class="radar-card">
+        <canvas id="radarCanvas" width="320" height="300" aria-hidden="true"></canvas>
+      </div>
+
+      <div class="bars-card" id="scoreBars"></div>
+
+      <div class="story-card">
+        <p><strong>領導沒有唯一的樣子。</strong></p>
+        <p>有人擅長看方向，有人能讓團隊靠得更近，有人讓事情真正開始，也有人在變化裡找到新的路。</p>
+        <p>真正的領導力，不是變成某一種標準答案，而是更了解自己，也學習怎麼和不同特質的人一起完成事情。</p>
+        <p>如果你想在大學裡認識更多不同的人、挑戰以前沒做過的事情、練習表達與合作，也慢慢找到自己的方向，歡迎來認識 <span class="club-name" id="clubNameStory">淡江大學領袖社</span>。</p>
+      </div>
+
+      <div class="done-card">
+        <button class="cta" type="button" id="doneBtn">完成！已登記抽獎 🎉</button>
+        <p class="hint">社博當天抽 5 名送手搖杯</p>
+        <p class="submit-status" id="submitStatus"></p>
+        <button class="cta secondary" type="button" id="resetBtn">重新測驗</button>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // 基本設定
+    const CLUB_NAME = "淡江大學領袖社";
+    const GOOGLE_SCRIPT_URL = "";
+    const DIMENSIONS = ["vision", "empathy", "decision", "crisis"];
+    const PHONE_RE = /^09\d{8}$/;
+
+    // 畫面切換
+    const screens = {
+      register: document.getElementById("screen-register"),
+      quiz: document.getElementById("screen-quiz"),
+      result: document.getElementById("screen-result"),
+    };
+
+    // 玩家資料
+    let player = { name: "", department: "", phone: "" };
+    let currentIndex = 0;
+    let isTransitioning = false;
+    let resultSubmitted = false;
+    let answers = [];
+    let answersJson = "";
+    let answersText = "";
+    let winnerKey = "vision";
+
+    // 四維分數
+    let scores = { vision: 0, empathy: 0, decision: 0, crisis: 0 };
+    let scoreHistory = [];
+
+    // 結果原型
+    const prototypes = {
+      vision: {
+        key: "vision",
+        title: "格局型領航者",
+        tagline: "你習慣先看方向，再決定怎麼走。",
+        body: [
+          "你在團隊裡常常不是第一個衝出去的人，而是會先想：「我們真正想做到的是什麼？」",
+          "你擅長從混亂裡抓住方向，看到眼前任務之外的可能性。當大家都只注意今天要完成什麼，你可能已經開始想到下一步。",
+          "需要提醒自己的是：好的方向也需要透過行動與溝通，才能真的帶著大家前進。",
+        ],
+      },
+      empathy: {
+        key: "empathy",
+        title: "凝聚型夥伴",
+        tagline: "你很自然地注意到，團隊裡的每一個人。",
+        body: [
+          "你對人的情緒與團隊氣氛很敏感。當有人跟不上、意見不同，或現場開始尷尬，你往往很快就會發現。",
+          "你的力量不一定是最大聲的那一個，而是讓不同的人願意留下來、願意一起做事情。",
+          "需要提醒自己的是：照顧大家的同時，也別忘了表達自己的想法與界線。",
+        ],
+      },
+      decision: {
+        key: "decision",
+        title: "行動型領導者",
+        tagline: "比起一直討論，你更習慣先讓事情開始前進。",
+        body: [
+          "遇到事情時，你很自然會開始想：「那現在第一步要做什麼？」你擅長整理任務、做選擇，把模糊的問題變成可以執行的行動。",
+          "團隊卡住時，你常常是讓事情重新動起來的人。",
+          "需要提醒自己的是：速度很重要，但偶爾多聽一點其他人的觀察，可能會讓決定更加完整。",
+        ],
+      },
+      crisis: {
+        key: "crisis",
+        title: "破局型挑戰者",
+        tagline: "原本的方法走不通？那就換一條路。",
+        body: [
+          "遇到突發狀況時，你通常不會一直糾結：「為什麼事情變成這樣？」而是很快開始尋找：「還有什麼辦法？」",
+          "你對變化的接受度高，也比較敢嘗試新的方法。當計畫失效時，你可能反而是最能發揮的人。",
+          "需要提醒自己的是：突破很重要，但有時候穩定與長期規劃，也能讓好點子真正留下來。",
+        ],
+      },
+    };
+
+    const dimMeta = {
+      vision: { label: "遠見力", fill: "fill-vision" },
+      empathy: { label: "同理心", fill: "fill-empathy" },
+      decision: { label: "決策力", fill: "fill-decision" },
+      crisis: { label: "應變力", fill: "fill-crisis" },
+    };
+
+    // 題目資料
+    const questions = [
+      {
+        id: 1,
+        category: "社團危機",
+        question: "你們明天就要交社團企劃，負責重要部分的組員突然整天不讀訊息。你會先怎麼做？",
+        options: [
+          { key: "A", text: "先把剩下工作拆開，確認今晚最低限度一定要完成哪些。", scores: { vision: 1, empathy: 0, decision: 3, crisis: 1 } },
+          { key: "B", text: "先私訊問他是不是發生什麼事，確認狀況後再決定怎麼分工。", scores: { vision: 0, empathy: 3, decision: 1, crisis: 1 } },
+          { key: "C", text: "直接想一個沒有他也能成立的備案，避免整個企劃被一個人卡住。", scores: { vision: 1, empathy: 0, decision: 1, crisis: 3 } },
+          { key: "D", text: "趁這次重新整理整份企劃，看看是不是原本分工方式就有問題。", scores: { vision: 3, empathy: 1, decision: 1, crisis: 0 } },
+        ],
+      },
+      {
+        id: 2,
+        category: "會議現場",
+        question: "社團開會時，兩個幹部為了活動方向越講越火大，氣氛開始很僵。你最可能：",
+        options: [
+          { key: "A", text: "先讓雙方把真正介意的事情講完，確認兩邊其實在擔心什麼。", scores: { vision: 1, empathy: 3, decision: 0, crisis: 1 } },
+          { key: "B", text: "把目前爭議整理成兩三個選項，直接決定今天一定要處理哪一個。", scores: { vision: 0, empathy: 1, decision: 3, crisis: 1 } },
+          { key: "C", text: "提出第三種做法，看看能不能跳脫兩邊現在的選項。", scores: { vision: 1, empathy: 1, decision: 0, crisis: 3 } },
+          { key: "D", text: "把討論拉回：「我們這場活動到底最想讓新生得到什麼？」", scores: { vision: 3, empathy: 1, decision: 1, crisis: 0 } },
+        ],
+      },
+      {
+        id: 3,
+        category: "預算警報",
+        question: "原本活動有 12,000 元，結果突然只剩 6,000 元。你第一反應會是：",
+        options: [
+          { key: "A", text: "重新排優先順序，哪些是活動核心、哪些其實可以拿掉。", scores: { vision: 3, empathy: 0, decision: 1, crisis: 1 } },
+          { key: "B", text: "立刻重做預算表，先把能執行的版本定下來。", scores: { vision: 1, empathy: 0, decision: 3, crisis: 1 } },
+          { key: "C", text: "開始找替代方案：借器材、換場地、合作、找免費資源。", scores: { vision: 1, empathy: 0, decision: 1, crisis: 3 } },
+          { key: "D", text: "先跟大家討論，確認大家最不希望被犧牲的是哪一部分。", scores: { vision: 1, empathy: 3, decision: 1, crisis: 0 } },
+        ],
+      },
+      {
+        id: 4,
+        category: "宣傳日常",
+        question: "你們花很多時間做的活動貼文，發出去兩天互動還是超低。你會：",
+        options: [
+          { key: "A", text: "直接重做標題、首圖與宣傳方式，再測另一個版本。", scores: { vision: 1, empathy: 0, decision: 1, crisis: 3 } },
+          { key: "B", text: "去問幾個真的屬於目標族群的同學：「你看到這篇會想參加嗎？為什麼？」", scores: { vision: 1, empathy: 3, decision: 0, crisis: 1 } },
+          { key: "C", text: "重新思考：我們到底在吸引誰？活動賣點是不是一開始就沒講清楚？", scores: { vision: 3, empathy: 1, decision: 1, crisis: 0 } },
+          { key: "D", text: "今天就排出新的宣傳行動，限動、班群、朋友轉發、現場宣傳一起做。", scores: { vision: 0, empathy: 1, decision: 3, crisis: 1 } },
+        ],
+      },
+      {
+        id: 5,
+        category: "課業警報",
+        question: "下週要辦你很期待的社團活動，結果教授突然宣布同一週要考很重的考試。你會：",
+        options: [
+          { key: "A", text: "立刻把接下來每天能用的時間排出來，先決定哪些事情必須今天開始做。", scores: { vision: 1, empathy: 0, decision: 3, crisis: 1 } },
+          { key: "B", text: "重新看整週安排，找出課業和活動能不能重新分配優先順序。", scores: { vision: 3, empathy: 0, decision: 1, crisis: 1 } },
+          { key: "C", text: "和夥伴說明自己的狀況，看看哪些工作能交換或一起完成。", scores: { vision: 1, empathy: 3, decision: 1, crisis: 0 } },
+          { key: "D", text: "直接改變原本做法，把能簡化的事情全部簡化，先求兩邊都過關。", scores: { vision: 1, empathy: 0, decision: 1, crisis: 3 } },
+        ],
+      },
+      {
+        id: 6,
+        category: "宿舍日常",
+        question: "你的室友習慣半夜聊天、打遊戲，但你隔天常有早八。你比較可能：",
+        options: [
+          { key: "A", text: "找一個大家心情都還好的時間，談談彼此能接受的作息界線。", scores: { vision: 1, empathy: 3, decision: 1, crisis: 0 } },
+          { key: "B", text: "直接提出一個具體方案，例如晚上 12 點後戴耳機、聊天去公共空間。", scores: { vision: 0, empathy: 1, decision: 3, crisis: 1 } },
+          { key: "C", text: "先想替代做法，像耳塞、自習室、換位置，降低每天衝突。", scores: { vision: 0, empathy: 1, decision: 1, crisis: 3 } },
+          { key: "D", text: "希望大家一起定一套長期生活規則，不要每次出問題才重新吵一次。", scores: { vision: 3, empathy: 1, decision: 1, crisis: 0 } },
+        ],
+      },
+      {
+        id: 7,
+        category: "社博現場",
+        question: "社博一整排社團都在招人，你覺得好多都很有趣，但時間有限。你會：",
+        options: [
+          { key: "A", text: "先想：我希望大學四年後的自己多會什麼、多認識什麼？", scores: { vision: 3, empathy: 1, decision: 1, crisis: 0 } },
+          { key: "B", text: "直接挑幾個最有感覺的攤位去聊，聊完就決定要不要加入。", scores: { vision: 0, empathy: 1, decision: 3, crisis: 1 } },
+          { key: "C", text: "觀察攤位上的人相處起來舒不舒服，因為你很在意一起做事的人。", scores: { vision: 1, empathy: 3, decision: 1, crisis: 0 } },
+          { key: "D", text: "先每個有興趣的都掃 QR Code，回家再慢慢比較，保留最多可能性。", scores: { vision: 1, empathy: 0, decision: 1, crisis: 3 } },
+        ],
+      },
+      {
+        id: 8,
+        category: "課堂分組",
+        question: "老師突然說：「現在自由分組。」你環顧教室，一個熟人都沒有。你會：",
+        options: [
+          { key: "A", text: "直接走向看起來還缺人的組：「你們還缺人嗎？」", scores: { vision: 0, empathy: 1, decision: 3, crisis: 1 } },
+          { key: "B", text: "先看看有沒有人也落單，主動找他一起。", scores: { vision: 0, empathy: 3, decision: 1, crisis: 1 } },
+          { key: "C", text: "觀察一下每組看起來在做什麼，選一個自己真的想投入的方向。", scores: { vision: 3, empathy: 1, decision: 1, crisis: 0 } },
+          { key: "D", text: "乾脆自己先開一組，再邀請其他還沒有組的人加入。", scores: { vision: 1, empathy: 0, decision: 1, crisis: 3 } },
+        ],
+      },
+      {
+        id: 9,
+        category: "課業警報",
+        question: "成績公布，你發現某科如果期中再考差，真的可能被當。你會：",
+        options: [
+          { key: "A", text: "今天就整理考試範圍，安排接下來每天要讀多少。", scores: { vision: 1, empathy: 0, decision: 3, crisis: 1 } },
+          { key: "B", text: "先找同學、學長姐或助教，確認自己到底是哪裡沒有搞懂。", scores: { vision: 0, empathy: 3, decision: 1, crisis: 1 } },
+          { key: "C", text: "重新設計自己的讀書方式，原本的方法沒用就直接換一套。", scores: { vision: 1, empathy: 0, decision: 1, crisis: 3 } },
+          { key: "D", text: "回頭找這科最核心的概念，不要再只追著每週進度跑。", scores: { vision: 3, empathy: 0, decision: 1, crisis: 1 } },
+        ],
+      },
+      {
+        id: 10,
+        category: "迎新現場",
+        question: "迎新活動開始十分鐘，新生大家都坐得很安靜，主持人丟梗也沒什麼反應。如果你在工作人員裡，你會：",
+        options: [
+          { key: "A", text: "先找幾位比較害羞的新生聊天，讓大家慢慢有安全感。", scores: { vision: 0, empathy: 3, decision: 1, crisis: 1 } },
+          { key: "B", text: "馬上換掉現在的流程，改成簡單、低壓力、人人都能參與的小活動。", scores: { vision: 0, empathy: 1, decision: 1, crisis: 3 } },
+          { key: "C", text: "直接請工作人員分散加入各桌，把現場互動先帶起來。", scores: { vision: 0, empathy: 1, decision: 3, crisis: 1 } },
+          { key: "D", text: "觀察大家為什麼冷，判斷是活動太陌生、太尷尬，還是現場氣氛和預期不同，再調整整體節奏。", scores: { vision: 3, empathy: 1, decision: 0, crisis: 1 } },
+        ],
+      },
+    ];
+
+    const badgeSVG = {
+      vision: `<svg viewBox="0 0 108 108" role="img" aria-label="格局型領航者徽章"><circle cx="54" cy="54" r="50" fill="#E8F4FF"/><circle cx="54" cy="54" r="38" fill="#5BA4E6"/><circle cx="54" cy="54" r="8" fill="#FFFDF7"/><path d="M54 22 L58 54 L54 86 L50 54 Z" fill="#FFFDF7" opacity=".9"/><path d="M22 54 L54 50 L86 54 L54 58 Z" fill="#DDF3FF" opacity=".85"/><circle cx="54" cy="22" r="4" fill="#FFD76A"/></svg>`,
+      empathy: `<svg viewBox="0 0 108 108" role="img" aria-label="凝聚型夥伴徽章"><circle cx="54" cy="54" r="50" fill="#E7F8E3"/><circle cx="54" cy="54" r="38" fill="#7BC96F"/><circle cx="40" cy="50" r="10" fill="#FFFDF7"/><circle cx="68" cy="50" r="10" fill="#FFFDF7"/><path d="M32 64 Q54 84 76 64" fill="none" stroke="#FFFDF7" stroke-width="5" stroke-linecap="round"/></svg>`,
+      decision: `<svg viewBox="0 0 108 108" role="img" aria-label="行動型領導者徽章"><circle cx="54" cy="54" r="50" fill="#FFE8D2"/><circle cx="54" cy="54" r="38" fill="#FFA95A"/><path d="M40 56 L50 66 L70 42" fill="none" stroke="#FFFDF7" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+      crisis: `<svg viewBox="0 0 108 108" role="img" aria-label="破局型挑戰者徽章"><circle cx="54" cy="54" r="50" fill="#FFF6D8"/><circle cx="54" cy="54" r="38" fill="#E8B84A"/><path d="M58 28 L42 56 H56 L50 80 L70 50 H54 Z" fill="#FFFDF7"/></svg>`,
+    };
+
+    function emptyScores() {
+      return { vision: 0, empathy: 0, decision: 0, crisis: 0 };
+    }
+
+    function showScreen(name) {
+      const key = String(name).replace(/^screen-/, "");
+      Object.entries(screens).forEach(([id, el]) => {
+        const active = id === key;
+        el.classList.toggle("active", active);
+        el.setAttribute("aria-hidden", active ? "false" : "true");
+      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function setFieldError(id, message, hasError) {
+      const field = document.getElementById("field-" + id);
+      const err = document.getElementById("err-" + id);
+      field.classList.toggle("error", Boolean(hasError));
+      if (message) err.textContent = message;
+      document.getElementById(id).setAttribute("aria-invalid", hasError ? "true" : "false");
+    }
+
+    function validateRegistration() {
+      const name = document.getElementById("name").value.trim();
+      const department = document.getElementById("department").value.trim();
+      const phoneRaw = document.getElementById("phone").value.trim();
+      const phone = phoneRaw.replace(/[\s-]/g, "");
+      let ok = true;
+
+      if (!name) {
+        setFieldError("name", "請填寫姓名", true);
+        ok = false;
+      } else {
+        setFieldError("name", "", false);
+      }
+
+      if (!department) {
+        setFieldError("department", "請填寫系級", true);
+        ok = false;
+      } else {
+        setFieldError("department", "", false);
+      }
+
+      if (!phone) {
+        setFieldError("phone", "請填寫電話", true);
+        ok = false;
+      } else if (!PHONE_RE.test(phone)) {
+        setFieldError("phone", "請輸入有效的台灣手機號碼（09 開頭共 10 碼）", true);
+        ok = false;
+      } else {
+        setFieldError("phone", "", false);
+        document.getElementById("phone").value = phone;
+      }
+      return ok ? { name, department, phone } : null;
+    }
+
+    function validateForm() {
+      return validateRegistration();
+    }
+
+    function startQuiz() {
+      const data = validateForm();
+      if (!data) {
+        const firstError = document.querySelector(".field.error input");
+        if (firstError) firstError.focus();
+        return;
+      }
+      player = data;
+      currentIndex = 0;
+      answers = [];
+      scores = emptyScores();
+      scoreHistory = [];
+      isTransitioning = false;
+      resultSubmitted = false;
+      showScreen("quiz");
+      renderQuestion();
+    }
+
+    // 顯示題目
+    function renderQuestion() {
+      const q = questions[currentIndex];
+      const total = questions.length;
+      const pct = Math.round(((currentIndex + 1) / total) * 100);
+      document.getElementById("qCount").textContent = "第 " + q.id + " 題 / " + total;
+      document.getElementById("qPct").textContent = pct + "%";
+      document.getElementById("progressFill").style.width = pct + "%";
+      document.getElementById("qCategory").textContent = q.category;
+      document.getElementById("qText").textContent = q.question;
+
+      const card = document.getElementById("questionCard");
+      card.style.animation = "none";
+      void card.offsetWidth;
+      card.style.animation = "";
+
+      const box = document.getElementById("options");
+      box.innerHTML = "";
+      q.options.forEach((opt) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "option";
+        btn.dataset.key = opt.key;
+        btn.setAttribute("aria-label", "選項 " + opt.key + "：" + opt.text);
+        btn.innerHTML = '<span class="opt-key">' + opt.key + '</span><span class="opt-text"></span>';
+        btn.querySelector(".opt-text").textContent = opt.text;
+        btn.addEventListener("click", () => selectAnswer(opt, btn));
+        box.appendChild(btn);
+      });
+    }
+
+    // 記錄答案
+    function selectAnswer(option, button) {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      button.classList.add("selected");
+      document.querySelectorAll(".option").forEach((el) => { el.disabled = true; });
+
+      const q = questions[currentIndex];
+      answers.push({
+        question: q.id,
+        choice: option.key,
+        text: option.text,
+        scores: { ...option.scores },
+      });
+      applyScores(option.scores);
+      recordScoreHistory(currentIndex, option.scores);
+
+      window.setTimeout(() => {
+        if (currentIndex >= questions.length - 1) {
+          finishQuiz();
+        } else {
+          nextQuestion();
+        }
+      }, 200);
+    }
+
+    // 計分
+    function applyScores(delta) {
+      DIMENSIONS.forEach((dim) => {
+        scores[dim] += Number(delta[dim] || 0);
+      });
+    }
+
+    function recordScoreHistory(questionIndex, delta) {
+      DIMENSIONS.forEach((dim) => {
+        if (Number(delta[dim] || 0) > 0) {
+          scoreHistory.push({
+            dimension: dim,
+            score: scores[dim],
+            questionIndex,
+          });
+        }
+      });
+    }
+
+    function nextQuestion() {
+      currentIndex += 1;
+      isTransitioning = false;
+      renderQuestion();
+    }
+
+    function finishQuiz() {
+      winnerKey = calculateWinner();
+      const proto = getPrototype(winnerKey);
+      answersText = createAnswersText();
+      answersJson = createAnswersJson();
+      renderResult(proto);
+      showScreen("result");
+      isTransitioning = false;
+      requestAnimationFrame(() => {
+        drawRadarChart();
+        renderScoreBars();
+      });
+      submitResult();
+    }
+
+    // 同分判定：先達到最終最高分者獲勝
+    function calculateWinner() {
+      const maxScore = Math.max(scores.vision, scores.empathy, scores.decision, scores.crisis);
+      const tied = DIMENSIONS.filter((dim) => scores[dim] === maxScore);
+      if (tied.length === 1) return tied[0];
+
+      let winner = tied[0];
+      let bestIndex = Infinity;
+      tied.forEach((dim) => {
+        const first = scoreHistory.find((h) => h.dimension === dim && h.score >= maxScore);
+        const idx = first ? first.questionIndex : Infinity;
+        if (idx < bestIndex) {
+          bestIndex = idx;
+          winner = dim;
+        } else if (idx === bestIndex && DIMENSIONS.indexOf(dim) < DIMENSIONS.indexOf(winner)) {
+          winner = dim;
+        }
+      });
+      return winner;
+    }
+
+    function getPrototype(key) {
+      return prototypes[key] || prototypes.vision;
+    }
+
+    function calculateDimensionMaximums() {
+      const maxes = emptyScores();
+      questions.forEach((q) => {
+        const qMax = emptyScores();
+        q.options.forEach((opt) => {
+          DIMENSIONS.forEach((dim) => {
+            qMax[dim] = Math.max(qMax[dim], Number(opt.scores[dim] || 0));
+          });
+        });
+        DIMENSIONS.forEach((dim) => { maxes[dim] += qMax[dim]; });
+      });
+      return maxes;
+    }
+
+    function normalizeScores() {
+      const maxes = calculateDimensionMaximums();
+      const normalized = emptyScores();
+      DIMENSIONS.forEach((dim) => {
+        const max = maxes[dim] || 1;
+        normalized[dim] = Math.min(1, Math.max(0, scores[dim] / max));
+      });
+      return normalized;
+    }
+
+    function createAnswersText() {
+      return answers.map((a) => "Q" + a.question + ":" + a.choice).join(" | ");
+    }
+
+    function createAnswersJson() {
+      return JSON.stringify(answers);
+    }
+
+    function renderResult(proto) {
+      document.getElementById("resultTitle").textContent = proto.title;
+      document.getElementById("resultTagline").textContent = proto.tagline;
+      const body = document.getElementById("resultBody");
+      body.innerHTML = "";
+      proto.body.forEach((paragraph) => {
+        const p = document.createElement("p");
+        p.textContent = paragraph;
+        body.appendChild(p);
+      });
+      document.getElementById("protoBadge").innerHTML = badgeSVG[proto.key];
+      document.getElementById("clubNameStory").textContent = CLUB_NAME;
+    }
+
+    // 雷達圖
+    function drawRadarChart() {
+      const canvas = document.getElementById("radarCanvas");
+      const ctx = canvas.getContext("2d");
+      const dpr = window.devicePixelRatio || 1;
+      const cssWidth = canvas.clientWidth || 320;
+      const cssHeight = canvas.clientHeight || 300;
+      canvas.width = Math.round(cssWidth * dpr);
+      canvas.height = Math.round(cssHeight * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, cssWidth, cssHeight);
+
+      const cx = cssWidth / 2;
+      const cy = cssHeight / 2 + 4;
+      const radius = Math.min(cssWidth, cssHeight) * 0.28;
+      const axes = [
+        { key: "vision", label: "遠見力", angle: -Math.PI / 2 },
+        { key: "empathy", label: "同理心", angle: 0 },
+        { key: "decision", label: "決策力", angle: Math.PI / 2 },
+        { key: "crisis", label: "應變力", angle: Math.PI },
+      ];
+      const normalized = normalizeScores();
+      const levels = 4;
+
+      ctx.strokeStyle = "rgba(36,51,63,0.10)";
+      ctx.lineWidth = 1;
+      for (let i = 1; i <= levels; i++) {
+        ctx.beginPath();
+        axes.forEach((ax, idx) => {
+          const r = radius * (i / levels);
+          const x = cx + Math.cos(ax.angle) * r;
+          const y = cy + Math.sin(ax.angle) * r;
+          if (idx === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        });
+        ctx.closePath();
+        ctx.stroke();
+      }
+
+      ctx.strokeStyle = "rgba(36,51,63,0.16)";
+      axes.forEach((ax) => {
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(cx + Math.cos(ax.angle) * radius, cy + Math.sin(ax.angle) * radius);
+        ctx.stroke();
+      });
+
+      ctx.beginPath();
+      axes.forEach((ax, idx) => {
+        const r = radius * normalized[ax.key];
+        const x = cx + Math.cos(ax.angle) * r;
+        const y = cy + Math.sin(ax.angle) * r;
+        if (idx === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      });
+      ctx.closePath();
+      ctx.fillStyle = "rgba(123, 201, 111, 0.32)";
+      ctx.strokeStyle = "#5EA85A";
+      ctx.lineWidth = 2;
+      ctx.fill();
+      ctx.stroke();
+
+      axes.forEach((ax) => {
+        const r = radius * normalized[ax.key];
+        const x = cx + Math.cos(ax.angle) * r;
+        const y = cy + Math.sin(ax.angle) * r;
+        ctx.beginPath();
+        ctx.arc(x, y, 4.5, 0, Math.PI * 2);
+        ctx.fillStyle = "#7BC96F";
+        ctx.fill();
+        ctx.strokeStyle = "#fff";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      });
+
+      ctx.fillStyle = "#24333F";
+      ctx.font = "700 13px " + getComputedStyle(document.body).fontFamily;
+      ctx.strokeStyle = "rgba(255,253,247,0.92)";
+      ctx.lineWidth = 4;
+      ctx.lineJoin = "round";
+      axes.forEach((ax) => {
+        const pad = ax.key === "vision" || ax.key === "decision" ? 26 : 32;
+        const lx = cx + Math.cos(ax.angle) * (radius + pad);
+        const ly = cy + Math.sin(ax.angle) * (radius + pad);
+        if (ax.key === "crisis") ctx.textAlign = "right";
+        else if (ax.key === "empathy") ctx.textAlign = "left";
+        else ctx.textAlign = "center";
+        if (ax.key === "vision") ctx.textBaseline = "bottom";
+        else if (ax.key === "decision") ctx.textBaseline = "top";
+        else ctx.textBaseline = "middle";
+        ctx.strokeText(ax.label, lx, ly);
+        ctx.fillText(ax.label, lx, ly);
+      });
+    }
+
+    // 分數條
+    function renderScoreBars() {
+      const normalized = normalizeScores();
+      const winner = winnerKey;
+      const box = document.getElementById("scoreBars");
+      box.innerHTML = '<p class="section-label">本次選擇傾向</p>' + DIMENSIONS.map((dim) => {
+        const pct = Math.round(normalized[dim] * 100);
+        const main = dim === winner
+          ? '<span class="main-badge">你的主要特質</span>'
+          : "";
+        return (
+          '<div class="score-row">' +
+            '<div class="score-head">' +
+              '<span class="score-name">' + dimMeta[dim].label + "</span>" +
+              main +
+              '<span class="score-val">' + scores[dim] + " 分</span>" +
+            "</div>" +
+            '<div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct +
+              '" aria-label="' + dimMeta[dim].label + "本次選擇傾向 " + scores[dim] + ' 分">' +
+              '<i class="' + dimMeta[dim].fill + '" style="width:' + pct + '%"></i>' +
+            "</div>" +
+          "</div>"
+        );
+      }).join("");
+    }
+
+    // 台灣時間
+    function getTaipeiTime() {
+      const parts = new Intl.DateTimeFormat("en-CA", {
+        timeZone: "Asia/Taipei",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false,
+      }).formatToParts(new Date());
+      const get = (type) => (parts.find((p) => p.type === type) || { value: "00" }).value;
+      let hour = get("hour");
+      if (hour === "24") hour = "00";
+      return get("year") + "/" + get("month") + "/" + get("day") + " " + hour + ":" + get("minute") + ":" + get("second");
+    }
+
+    function buildPayload() {
+      const proto = getPrototype(winnerKey);
+      return {
+        game: "game2",
+        time: getTaipeiTime(),
+        name: player.name,
+        department: player.department,
+        phone: player.phone,
+        score: winnerKey,
+        title: proto.title,
+        result: proto.title,
+        visionScore: scores.vision,
+        empathyScore: scores.empathy,
+        decisionScore: scores.decision,
+        crisisScore: scores.crisis,
+        answersText,
+        answersJson,
+      };
+    }
+
+    // Google Sheet 送出
+    function submitResult() {
+      if (resultSubmitted) return;
+      resultSubmitted = true;
+      const status = document.getElementById("submitStatus");
+      if (!GOOGLE_SCRIPT_URL) {
+        status.className = "submit-status";
+        status.textContent = "目前尚未設定後端，結果僅供現場查看。";
+        return;
+      }
+      status.className = "submit-status";
+      status.textContent = "正在登記抽獎…";
+      const payload = buildPayload();
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload),
+      }).then(() => {
+        status.className = "submit-status ok";
+        status.textContent = "✓ 已送出抽獎登記";
+      }).catch(() => {
+        status.className = "submit-status warn";
+        status.textContent = "結果已完成，但抽獎資料暫時無法送出，請洽現場工作人員。";
+      });
+    }
+
+    // 重新測驗
+    function resetQuiz() {
+      player = { name: "", department: "", phone: "" };
+      currentIndex = 0;
+      isTransitioning = false;
+      resultSubmitted = false;
+      answers = [];
+      answersJson = "";
+      answersText = "";
+      scores = emptyScores();
+      scoreHistory = [];
+      winnerKey = "vision";
+      document.getElementById("registerForm").reset();
+      ["name", "department", "phone"].forEach((id) => setFieldError(id, "", false));
+      document.getElementById("submitStatus").textContent = "";
+      document.getElementById("options").innerHTML = "";
+      document.getElementById("scoreBars").innerHTML = "";
+      showScreen("register");
+      document.getElementById("name").focus();
+    }
+
+    function bindClubName() {
+      document.getElementById("clubChip").textContent = CLUB_NAME;
+      document.getElementById("clubNameStory").textContent = CLUB_NAME;
+    }
+
+    document.getElementById("registerForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      startQuiz();
+    });
+    document.getElementById("resetBtn").addEventListener("click", resetQuiz);
+    window.addEventListener("resize", () => {
+      if (screens.result.classList.contains("active")) drawRadarChart();
+    });
+
+    bindClubName();
+
+    window.__LEADER_QUIZ__ = {
+      questions,
+      calculateWinner,
+      calculateDimensionMaximums,
+      normalizeScores,
+      getTaipeiTime,
+      getPrototype,
+      createAnswersText,
+      buildPayload,
+      getState: () => ({ player, scores, answers, scoreHistory, winnerKey, answersText, resultSubmitted }),
+    };
+  </script>
+</body>
+</html>

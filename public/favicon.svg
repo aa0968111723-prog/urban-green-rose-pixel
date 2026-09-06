@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="探索你的領袖特質">
+  <rect width="32" height="32" rx="8" fill="#EAF6FF"/>
+  <circle cx="25.5" cy="7" r="3.4" fill="#FFD76A"/>
+  <ellipse cx="16" cy="20.2" rx="10" ry="8.2" fill="#7BC96F"/>
+  <ellipse cx="16" cy="19.6" rx="4.2" ry="3.3" fill="#5BB85A"/>
+  <circle cx="16" cy="10.4" r="5.1" fill="#8ED97F"/>
+  <circle cx="14" cy="10" r="1.4" fill="#24333F"/>
+  <circle cx="18.1" cy="10" r="1.4" fill="#24333F"/>
+</svg>

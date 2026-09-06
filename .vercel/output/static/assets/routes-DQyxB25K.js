@@ -1,0 +1,1 @@
+import{t as e}from"./index-BAc3YZ1P.js";var t=e();function n(){return(0,t.jsx)(`main`,{className:`quiz-shell`,children:(0,t.jsx)(`p`,{children:`正在進入測驗…`})})}export{n as component};
