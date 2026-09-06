@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as QuizRouteImport } from './routes/quiz'
+import { Route as StaffRouteImport } from './routes/staff'
+import { Route as ApiQuizSubmitRouteImport } from './routes/api/quiz/submit'
+import { Route as ApiStaffDrawRouteImport } from './routes/api/staff/draw'
+import { Route as ApiStaffExportRouteImport } from './routes/api/staff/export'
+import { Route as ApiStaffStatsRouteImport } from './routes/api/staff/stats'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const QuizRoute = QuizRouteImport.update({
+  id: '/quiz',
+  path: '/quiz',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffRoute = StaffRouteImport.update({
+  id: '/staff',
+  path: '/staff',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiQuizSubmitRoute = ApiQuizSubmitRouteImport.update({
+  id: '/api/quiz/submit',
+  path: '/api/quiz/submit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiStaffDrawRoute = ApiStaffDrawRouteImport.update({
+  id: '/api/staff/draw',
+  path: '/api/staff/draw',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiStaffExportRoute = ApiStaffExportRouteImport.update({
+  id: '/api/staff/export',
+  path: '/api/staff/export',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiStaffStatsRoute = ApiStaffStatsRouteImport.update({
+  id: '/api/staff/stats',
+  path: '/api/staff/stats',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/quiz': typeof QuizRoute
+  '/staff': typeof StaffRoute
+  '/api/quiz/submit': typeof ApiQuizSubmitRoute
+  '/api/staff/draw': typeof ApiStaffDrawRoute
+  '/api/staff/export': typeof ApiStaffExportRoute
+  '/api/staff/stats': typeof ApiStaffStatsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/quiz': typeof QuizRoute
+  '/staff': typeof StaffRoute
+  '/api/quiz/submit': typeof ApiQuizSubmitRoute
+  '/api/staff/draw': typeof ApiStaffDrawRoute
+  '/api/staff/export': typeof ApiStaffExportRoute
+  '/api/staff/stats': typeof ApiStaffStatsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/quiz': typeof QuizRoute
+  '/staff': typeof StaffRoute
+  '/api/quiz/submit': typeof ApiQuizSubmitRoute
+  '/api/staff/draw': typeof ApiStaffDrawRoute
+  '/api/staff/export': typeof ApiStaffExportRoute
+  '/api/staff/stats': typeof ApiStaffStatsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/quiz'
+    | '/staff'
+    | '/api/quiz/submit'
+    | '/api/staff/draw'
+    | '/api/staff/export'
+    | '/api/staff/stats'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/quiz'
+    | '/staff'
+    | '/api/quiz/submit'
+    | '/api/staff/draw'
+    | '/api/staff/export'
+    | '/api/staff/stats'
+  id:
+    | '__root__'
+    | '/'
+    | '/quiz'
+    | '/staff'
+    | '/api/quiz/submit'
+    | '/api/staff/draw'
+    | '/api/staff/export'
+    | '/api/staff/stats'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  QuizRoute: typeof QuizRoute
+  StaffRoute: typeof StaffRoute
+  ApiQuizSubmitRoute: typeof ApiQuizSubmitRoute
+  ApiStaffDrawRoute: typeof ApiStaffDrawRoute
+  ApiStaffExportRoute: typeof ApiStaffExportRoute
+  ApiStaffStatsRoute: typeof ApiStaffStatsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/quiz': {
+      id: '/quiz'
+      path: '/quiz'
+      fullPath: '/quiz'
+      preLoaderRoute: typeof QuizRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff': {
+      id: '/staff'
+      path: '/staff'
+      fullPath: '/staff'
+      preLoaderRoute: typeof StaffRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/quiz/submit': {
+      id: '/api/quiz/submit'
+      path: '/api/quiz/submit'
+      fullPath: '/api/quiz/submit'
+      preLoaderRoute: typeof ApiQuizSubmitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/staff/draw': {
+      id: '/api/staff/draw'
+      path: '/api/staff/draw'
+      fullPath: '/api/staff/draw'
+      preLoaderRoute: typeof ApiStaffDrawRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/staff/export': {
+      id: '/api/staff/export'
+      path: '/api/staff/export'
+      fullPath: '/api/staff/export'
+      preLoaderRoute: typeof ApiStaffExportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/staff/stats': {
+      id: '/api/staff/stats'
+      path: '/api/staff/stats'
+      fullPath: '/api/staff/stats'
+      preLoaderRoute: typeof ApiStaffStatsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  QuizRoute: QuizRoute,
+  StaffRoute: StaffRoute,
+  ApiQuizSubmitRoute: ApiQuizSubmitRoute,
+  ApiStaffDrawRoute: ApiStaffDrawRoute,
+  ApiStaffExportRoute: ApiStaffExportRoute,
+  ApiStaffStatsRoute: ApiStaffStatsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

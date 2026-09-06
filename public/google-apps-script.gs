@@ -1,14 +1,9 @@
 /**
  * 淡江大學領袖社｜探索你的領袖特質
- * 貼到 Google Apps Script 後部署為「網頁應用程式」：
- * - 執行身分：我
- * - 存取權：任何人
- * 再把部署網址貼回 leader-quiz.html 的 GOOGLE_SCRIPT_URL。
+ * 選用第二出口：把此腳本貼到 Google Apps Script，部署為網頁應用程式，
+ * 再把網址設成伺服器環境變數 GOOGLE_SCRIPT_URL（不要放進前端）。
  *
- * 試算表欄位：
- * time | name | department | phone | email | score | title |
- * visionScore | empathyScore | decisionScore | crisisScore |
- * answersText | answersJson
+ * 正式資料仍應由 /api/quiz/submit 驗證並寫入資料庫。
  */
 const SHEET_NAME = "leader-quiz";
 
@@ -20,6 +15,7 @@ function doPost(e) {
     const sheet = getSheet_();
     sheet.appendRow([
       data.time || "",
+      data.submissionId || "",
       data.name || "",
       data.department || "",
       data.phone || "",
@@ -32,6 +28,11 @@ function doPost(e) {
       data.crisisScore || 0,
       data.answersText || "",
       data.answersJson || "",
+      data.source || "",
+      data.utm_source || "",
+      data.utm_medium || "",
+      data.utm_campaign || "",
+      data.alreadyRegistered ? "yes" : "no",
     ]);
     return ContentService.createTextOutput(JSON.stringify({ ok: true }))
       .setMimeType(ContentService.MimeType.JSON);
@@ -49,9 +50,10 @@ function getSheet_() {
   if (!sheet) {
     sheet = ss.insertSheet(SHEET_NAME);
     sheet.appendRow([
-      "time", "name", "department", "phone", "email", "score", "title",
+      "time", "submissionId", "name", "department", "phone", "email", "score", "title",
       "visionScore", "empathyScore", "decisionScore", "crisisScore",
-      "answersText", "answersJson",
+      "answersText", "answersJson", "source", "utm_source", "utm_medium", "utm_campaign",
+      "alreadyRegistered",
     ]);
     sheet.setFrozenRows(1);
   }
