@@ -1,0 +1,15 @@
+node_modules
+npm-debug.log*
+.git
+.gitignore
+.grok
+.output
+.vercel
+.nitro
+dist
+artifacts
+attachments
+screenshots
+*.md
+.env
+.env.*

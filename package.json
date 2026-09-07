@@ -14,6 +14,7 @@
     "preview": "node scripts/with-app-env.mjs vite preview",
     "preview:restart": "node scripts/preview.mjs restart",
     "preview:stop": "node scripts/preview.mjs stop",
+    "start": "node .output/server/index.mjs",
     "typecheck": "tsc --noEmit",
     "check:auth": "node scripts/check-auth-invariant.mjs",
     "test": "node --test scripts/**/*.test.mjs && node --experimental-strip-types --test src/lib/app-data/app-data.test.ts src/lib/auth/gate-identity.test.ts src/lib/auth/sign-in-gate.test.ts src/features/leader-quiz/lib/scoring.test.ts src/features/leader-quiz/lib/validation.test.ts src/features/leader-quiz/lib/evaluate.test.ts src/features/leader-quiz/lib/persistence.test.ts src/features/leader-quiz/lib/submit-client.test.ts src/features/leader-quiz/lib/tracking.test.ts src/features/leader-quiz/quiz-distribution.test.ts src/server/quiz/rate-limit.test.ts",
